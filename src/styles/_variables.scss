@@ -1,6 +1,11 @@
 $primary: map-get($theme, primary);
+$primary-color: map-get($theme, primary, default);
+
 $accent: map-get($theme, accent);
+$accent-color: map-get($theme, accent, default);
+
 $warn: map-get($theme, warn);
+$warn-color: map-get($theme, warn, default);
 
 $foreground: map-get($theme, foreground);
 $text-color: map-get($foreground, text);
@@ -11,3 +16,5 @@ $background-color: map-get($background, background);
 $spacer: 4px;
 $row-spacer: $spacer * 2;
 $column-spacer: $spacer * 2;
+
+$content-padding: $spacer * 5;
