@@ -4,6 +4,13 @@
   "projectType": "application",
   "prefix": "nev",
   "sourceRoot": "./src",
+  "i18n": {
+    "sourceLocale": "en",
+    "locales": {
+      "es": "src/app/assets/i18n/en.json",
+      "de": "src/app/assets/i18n/de.json"
+    }
+  },
   "tags": [],
   "targets": {
     "build": {

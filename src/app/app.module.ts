@@ -10,7 +10,15 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MaterialModule } from './material.module';
 import { PageModule } from './pages/page.module';
 import { ComponentModule } from './components/component.module';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import {
+    HttpClient,
+    HttpClientModule,
+    provideHttpClient,
+    withFetch,
+} from '@angular/common/http';
+
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 @NgModule({
     declarations: [AppComponent],
@@ -18,6 +26,15 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
         BrowserModule,
         RouterModule.forRoot(appRoutes),
         MaterialModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: (http: HttpClient) =>
+                    new TranslateHttpLoader(http, './assets/i18n/', '.json'),
+                deps: [HttpClient],
+            },
+        }),
         ComponentModule,
         PageModule,
     ],
