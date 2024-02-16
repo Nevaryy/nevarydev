@@ -1,3 +1,22 @@
 {
-  "singleQuote": true
+  "singleQuote": true,
+  "tabWidth": 4,
+  "endOfLine": "crlf",
+  "overrides": [
+    {
+      "files": [
+        "*.json",
+        "*.yml",
+        "*.yaml",
+        "*.md",
+        "*.html",
+        "*.css",
+        "*.scss",
+        "*.less"
+      ],
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
 }
