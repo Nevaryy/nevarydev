@@ -2,7 +2,7 @@
   "name": "nevarydev",
   "$schema": "node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "nevarydev",
+  "prefix": "nev",
   "sourceRoot": "./src",
   "tags": [],
   "targets": {
