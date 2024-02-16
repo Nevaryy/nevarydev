@@ -13,7 +13,12 @@ export class TranslationService {
         private translateService: TranslateService
     ) {}
 
+    public get languages() {
+        return this.translateService.getLangs();
+    }
+
     public initialize() {
+        this.translateService.addLangs(['en', 'de']);
         const localStorage = this.document.defaultView?.localStorage;
 
         const userLang =
