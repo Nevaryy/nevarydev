@@ -40,7 +40,31 @@
       "e2eTestRunner": "none",
       "linter": "eslint",
       "style": "scss",
-      "unitTestRunner": "jest"
+      "unitTestRunner": "none",
+      "bundler": "esbuild",
+      "directory": "apps",
+      "routing": true,
+      "standalone": false,
+      "minimal": true,
+      "skipTests": true
+    },
+    "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "none",
+      "directory": "libs/",
+      "lazy": true,
+      "routing": true,
+      "importPath": "@nevary/",
+      "skipTests": true,
+      "standalone": false,
+      "style": "scss"
+    },
+    "@nx/angular:component": {
+      "style": "scss",
+      "skipTests": true,
+      "directory": ".",
+      "export": true,
+      "standalone": false
     }
   },
   "defaultProject": "nevarydev",
