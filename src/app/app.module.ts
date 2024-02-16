@@ -7,14 +7,26 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { NavigationComponent } from './components/navigation/navigation.component';
 import { MaterialModule } from './material.module';
+import { PageModule } from './pages/page.module';
+import { ComponentModule } from './components/component.module';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
-    declarations: [AppComponent, NavigationComponent],
-    imports: [BrowserModule, RouterModule.forRoot(appRoutes), MaterialModule],
-    providers: [provideClientHydration(), provideAnimationsAsync()],
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        RouterModule.forRoot(appRoutes),
+        MaterialModule,
+        ComponentModule,
+        PageModule,
+    ],
+    providers: [
+        provideClientHydration(),
+        provideAnimationsAsync(),
+        provideHttpClient(withFetch()),
+    ],
     bootstrap: [AppComponent],
-    exports: [NavigationComponent],
+    exports: [MaterialModule, ComponentModule, PageModule],
 })
 export class AppModule {}
