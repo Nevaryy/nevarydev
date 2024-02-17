@@ -20,10 +20,10 @@
 
     <span class="spacer"></span>
 
-    <div class="row">
-        <!-- <button mat-icon-button (click)="toggleTheme()">
-            <mat-icon>{{  }}</mat-icon>
-        </button> -->
+    <div class="row center-content">
+        <button mat-icon-button (click)="toggleTheme()">
+            <mat-icon>{{ (isDark$ | async) === false ? 'dark_mode' : 'light_mode' }}</mat-icon>
+        </button>
 
         <mat-form-field appearance="outline" class="no-bottom" style="width: 100px;">
             <mat-select (selectionChange)="swapLanguage($event.value)" [value]="currentLanguage">

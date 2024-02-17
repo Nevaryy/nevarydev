@@ -30,7 +30,7 @@ export class TranslationService {
         localStorage?.setItem(LANGUAGE_KEY, languageCode);
 
         this.translateService.setDefaultLang(languageCode);
-        this.translateService.use(languageCode);
+        return this.translateService.use(languageCode);
     }
 
     public get currentLanguage() {
@@ -40,7 +40,7 @@ export class TranslationService {
     public changeLanguage(language: string) {
         const localStorage = this.document.defaultView?.localStorage;
         localStorage?.setItem(LANGUAGE_KEY, language);
-        this.translateService.use(language);
+        return this.translateService.use(language);
     }
 
     public get(key: string) {
