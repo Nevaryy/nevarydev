@@ -1,0 +1,12 @@
+mat-drawer .actions {
+    margin: 4px 8px;
+    width: 200px;
+}
+
+mat-toolbar {
+    padding: 4px 8px;
+    display: flex;
+    flex-direction: row;
+    place-content: center flex-start;
+    align-items: center;
+}

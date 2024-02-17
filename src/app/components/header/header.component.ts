@@ -1,12 +1,12 @@
-import { TranslationService } from './../../services/translation.service';
 import { Component } from '@angular/core';
+import { TranslationService } from 'src/app/services/translation.service';
 
 @Component({
-    selector: 'nev-navigation',
-    templateUrl: './navigation.component.html',
-    styleUrl: './navigation.component.scss',
+    selector: 'nev-header',
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss',
 })
-export class NavigationComponent {
+export class HeaderComponent {
     languages = this.translationService.languages;
     currentLanguage = this.translationService.currentLanguage;
 

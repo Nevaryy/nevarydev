@@ -1,0 +1,34 @@
+<mat-drawer #drawer mode="over">
+    <mat-nav-list>
+        <div class="row actions">
+            <button mat-icon-button (click)="drawer.close()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        <a mat-list-item routerLink="/home" (click)="drawer.close()">{{ 'navigation.home' | translate }}</a>
+        <a mat-list-item routerLink="/about-me" (click)="drawer.close()">{{ 'navigation.about' | translate }}</a>
+        <a mat-list-item routerLink="/projects" (click)="drawer.close()">{{ 'navigation.projects' | translate }}</a>
+        <a mat-list-item routerLink="/imprint" (click)="drawer.close()">{{ 'navigation.imprint' | translate }}</a>
+    </mat-nav-list>
+</mat-drawer>
+
+<mat-toolbar class="row">
+    <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{ 'toolbar.title' | translate }}</span>
+
+    <span class="spacer"></span>
+
+    <div class="row">
+        <!-- <button mat-icon-button (click)="toggleTheme()">
+            <mat-icon>{{  }}</mat-icon>
+        </button> -->
+
+        <mat-form-field appearance="outline" class="no-bottom" style="width: 100px;">
+            <mat-select (selectionChange)="swapLanguage($event.value)" [value]="currentLanguage">
+                <mat-option *ngFor="let language of languages" [value]="language">{{ language }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</mat-toolbar>

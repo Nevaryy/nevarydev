@@ -1,5 +1,9 @@
-<nev-navigation>
-    <div class="content grow column">
-        <router-outlet></router-outlet>
-    </div>
-</nev-navigation>
+<mat-drawer-container>
+    <mat-drawer-content>
+        <nev-header></nev-header>
+        <div class="content grow column">
+            <router-outlet></router-outlet>
+        </div>
+        <nev-footer></nev-footer>
+    </mat-drawer-content>
+</mat-drawer-container>

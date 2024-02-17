@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavigationComponent } from './navigation/navigation.component';
 import { MaterialModule } from '../material.module';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
-    declarations: [NavigationComponent],
+    declarations: [HeaderComponent, FooterComponent],
     imports: [CommonModule, MaterialModule, RouterModule, TranslateModule],
-    exports: [NavigationComponent],
+    exports: [HeaderComponent, FooterComponent],
 })
 export class ComponentModule {}
