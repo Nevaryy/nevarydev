@@ -16,7 +16,8 @@ export class ThemeService {
 
     initialize(): Observable<any> {
         const localStorage = this.document.defaultView?.localStorage;
-        const theme = localStorage?.getItem(THEME_KEY) || 'dark';
+        const theme = localStorage?.getItem(THEME_KEY) || this.checkPrefersLightScheme() ? 'light' : 'dark';
+
         return of(this.setTheme(theme));
     }
 
@@ -38,5 +39,15 @@ export class ThemeService {
         const theme = localStorage?.getItem(THEME_KEY) || 'dark';
 
         return this.setTheme(theme === 'dark' ? 'light' : 'dark');
+    }
+
+    checkPrefersLightScheme() {
+        if (this.document.defaultView?.matchMedia) {
+            return this.document.defaultView?.matchMedia(
+                '(prefers-color-scheme: light)'
+            ).matches;
+        }
+
+        return false;
     }
 }
