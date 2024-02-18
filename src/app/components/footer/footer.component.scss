@@ -1,4 +1,14 @@
+@import 'themes/theme';
+
 :host {
     margin-top: auto;
-    width: 100%;
+}
+
+mat-toolbar {
+    padding: $spacer $spacer * 2;
+}
+
+a mat-icon {
+    height: $icon-height;
+    color: $text-color;
 }
