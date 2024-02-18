@@ -1,0 +1,27 @@
+@mixin set-variables($theme) {
+    $primary: map-get($theme, primary) !global;
+    $primary-color: map-get($theme, primary, default) !global;
+
+    $accent: map-get($theme, accent) !global;
+    $accent-color: map-get($theme, accent, default) !global;
+
+    $warn: map-get($theme, warn) !global;
+    $warn-color: map-get($theme, warn, default) !global;
+
+    $foreground: map-get($theme, foreground) !global;
+    $text-color: map-get($theme, text) !global;
+
+    $background: map-get($theme, background) !global;
+    $background-color: map-get($background, background) !global;
+
+    $spacer: 4px !global;
+    $row-spacer: $spacer * 2 !global;
+    $column-spacer: $spacer * 2 !global;
+
+    $content-padding: $spacer * 5 !global;
+
+    @if map-get($theme, is-dark) {
+        
+        $text-color: white !global;
+    }
+}
