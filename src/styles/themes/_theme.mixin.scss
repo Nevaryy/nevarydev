@@ -20,8 +20,5 @@
 
     $content-padding: $spacer * 5 !global;
 
-    @if map-get($theme, is-dark) {
-        
-        $text-color: white !global;
-    }
+    $icon-height: 24px !global;
 }

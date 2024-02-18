@@ -1,3 +1,8 @@
+.flex {
+    display: flex;
+    flex: 1;
+}
+
 .grow {
     display: flex;
     flex-grow: 1;
@@ -15,6 +20,10 @@
     gap: $column-spacer;
 }
 
+.no-gap {
+    gap: 0;
+}
+
 .center-content {
     align-items: center;
     justify-content: center;
@@ -30,6 +39,7 @@
 }
 
 .spacer {
+    display: flex;
     flex: 1;
 }
 
