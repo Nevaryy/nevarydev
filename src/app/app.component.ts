@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { TranslationService } from './services/translation.service';
 import { ThemeService } from './services/theme.service';
 
@@ -7,13 +7,11 @@ import { ThemeService } from './services/theme.service';
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
     constructor(
         private translationService: TranslationService,
         private themeService: ThemeService
-    ) {}
-
-    ngOnInit() {
+    ) {
         this.translationService.initialize();
         this.themeService.initialize();
     }
