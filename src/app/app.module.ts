@@ -19,6 +19,7 @@ import {
 
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { MatIconRegistry } from '@angular/material/icon';
 
 @NgModule({
     declarations: [AppComponent],
@@ -46,4 +47,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     bootstrap: [AppComponent],
     exports: [MaterialModule, ComponentModule, PageModule],
 })
-export class AppModule {}
+export class AppModule {
+    constructor(matIconRegistry: MatIconRegistry) {
+        matIconRegistry.registerFontClassAlias('fontawesome', 'fa');
+    }
+}
