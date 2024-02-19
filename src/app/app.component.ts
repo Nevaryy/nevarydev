@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { TranslationService } from './services/translation.service';
-import { ThemeService } from './services/theme.service';
 
 @Component({
     selector: 'nev-root',
@@ -8,11 +7,7 @@ import { ThemeService } from './services/theme.service';
     styleUrl: './app.component.scss',
 })
 export class AppComponent {
-    constructor(
-        private translationService: TranslationService,
-        private themeService: ThemeService
-    ) {
+    constructor(private translationService: TranslationService) {
         this.translationService.initialize();
-        this.themeService.initialize();
     }
 }

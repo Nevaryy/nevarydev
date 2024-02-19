@@ -1,6 +1,6 @@
-import { DOCUMENT } from '@angular/common';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { LocalStorageService } from './local-storage.service';
 
 export const LANGUAGE_KEY = 'language';
 
@@ -9,8 +9,8 @@ export const LANGUAGE_KEY = 'language';
 })
 export class TranslationService {
     constructor(
-        @Inject(DOCUMENT) private document: Document,
-        private translateService: TranslateService
+        private translateService: TranslateService,
+        private localStorageService: LocalStorageService
     ) {}
 
     public get languages() {
@@ -19,15 +19,14 @@ export class TranslationService {
 
     public initialize() {
         this.translateService.addLangs(['en', 'de']);
-        const localStorage = this.document.defaultView?.localStorage;
 
         const userLang =
-            localStorage?.getItem(LANGUAGE_KEY) ||
+            this.localStorageService.getItem(LANGUAGE_KEY) ||
             this.translateService.getBrowserLang() ||
             'en';
 
         const languageCode = userLang.split('-')[0];
-        localStorage?.setItem(LANGUAGE_KEY, languageCode);
+        this.localStorageService.setItem(LANGUAGE_KEY, languageCode);
 
         this.translateService.setDefaultLang(languageCode);
         return this.translateService.use(languageCode);
@@ -38,8 +37,7 @@ export class TranslationService {
     }
 
     public changeLanguage(language: string) {
-        const localStorage = this.document.defaultView?.localStorage;
-        localStorage?.setItem(LANGUAGE_KEY, language);
+        this.localStorageService.setItem(LANGUAGE_KEY, language);
         return this.translateService.use(language);
     }
 
