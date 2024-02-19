@@ -1,0 +1,13 @@
+<mat-drawer #drawer mode="over">
+    <mat-nav-list>
+        <div class="row actions">
+            <button mat-icon-button (click)="drawer.close()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        <a mat-list-item routerLink="/home" (click)="drawer.close()">{{ 'navigation.home' | translate }}</a>
+        <a mat-list-item routerLink="/about-me" (click)="drawer.close()">{{ 'navigation.about' | translate }}</a>
+        <a mat-list-item routerLink="/projects" (click)="drawer.close()">{{ 'navigation.projects' | translate }}</a>
+        <a mat-list-item routerLink="/imprint" (click)="drawer.close()">{{ 'navigation.imprint' | translate }}</a>
+    </mat-nav-list>
+</mat-drawer>
