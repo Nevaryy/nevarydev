@@ -3,16 +3,18 @@
 $theme: theme.get-current-theme();
 
 $primary: map-get($theme, primary);
-$primary-color: map-get($theme, primary, default);
+$primary-color: map-get($primary, default);
 
 $accent: map-get($theme, accent);
-$accent-color: map-get($theme, accent, default);
+$accent-color: map-get($accent, default);
 
 $warn: map-get($theme, warn);
-$warn-color: map-get($theme, warn, default);
+$warn-color: map-get($warn, default);
 
 $foreground: map-get($theme, foreground);
-$text-color: map-get($foreground, text);
+$foreground-color: map-get($foreground, default);
+
+$text-color: map-get($theme, text);
 
 $background: map-get($theme, background);
 $background-color: map-get($background, background);
