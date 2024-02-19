@@ -5,16 +5,18 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [HeaderComponent, FooterComponent, SidenavComponent],
-    imports: [CommonModule, MaterialModule, TranslateModule],
+    imports: [CommonModule, MaterialModule, RouterModule, TranslateModule],
     exports: [
         MaterialModule,
         TranslateModule,
         HeaderComponent,
         FooterComponent,
         SidenavComponent,
+        RouterModule,
     ],
 })
 export class ComponentModule {}
