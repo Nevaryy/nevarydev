@@ -1,3 +1,7 @@
+@use './themes/theme' as theme;
+
+$theme: theme.get-current-theme();
+
 $primary: map-get($theme, primary);
 $primary-color: map-get($theme, primary, default);
 
@@ -18,3 +22,5 @@ $row-spacer: $spacer * 2;
 $column-spacer: $spacer * 2;
 
 $content-padding: $spacer * 5;
+
+$icon-height: 24px;

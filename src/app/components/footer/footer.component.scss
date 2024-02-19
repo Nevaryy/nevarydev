@@ -1,14 +1,14 @@
-@import 'themes/theme';
+@use 'variables' as var;
 
 :host {
     margin-top: auto;
 }
 
 mat-toolbar {
-    padding: $spacer $spacer * 2;
+    padding: var.$spacer var.$spacer * 2;
 }
 
 a mat-icon {
-    height: $icon-height;
-    color: $text-color;
+    height: var.$icon-height;
+    color: var.$text-color;
 }

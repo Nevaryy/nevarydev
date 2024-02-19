@@ -5,10 +5,16 @@
 // hue. Available color palettes: https://material.io/design/color/
 @include mat.core();
 
+$theme: $dark-theme;
 @include set-variables($dark-theme);
 @include mat.all-component-themes($dark-theme);
 
 .light {
-    @include set-variables($light-theme);
-    @include mat.all-component-colors($light-theme);
+        $theme: $light-theme;
+        @include set-variables($light-theme);
+        @include mat.all-component-colors($light-theme);
+}
+
+@function get-current-theme() {
+    @return $theme;
 }
