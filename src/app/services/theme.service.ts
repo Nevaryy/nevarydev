@@ -31,6 +31,7 @@ export class ThemeService {
 
         this.document.body.classList.add(newTheme);
         localStorage?.setItem(THEME_KEY, newTheme);
+        this.isDark$.next(newTheme === 'dark');
         return newTheme;
     }
 
