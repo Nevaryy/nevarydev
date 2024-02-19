@@ -21,6 +21,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MatIconRegistry } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NevStoreModule } from './store/nev-store.module';
 
 @NgModule({
     declarations: [AppComponent],
@@ -28,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         BrowserModule,
         BrowserAnimationsModule,
         RouterModule.forRoot(appRoutes),
+        NevStoreModule,
         MaterialModule,
         HttpClientModule,
         TranslateModule.forRoot({
