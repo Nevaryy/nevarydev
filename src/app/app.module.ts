@@ -20,11 +20,13 @@ import {
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MatIconRegistry } from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [AppComponent],
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         RouterModule.forRoot(appRoutes),
         MaterialModule,
         HttpClientModule,
@@ -45,7 +47,12 @@ import { MatIconRegistry } from '@angular/material/icon';
         provideHttpClient(withFetch()),
     ],
     bootstrap: [AppComponent],
-    exports: [MaterialModule, ComponentModule, PageModule],
+    exports: [
+        BrowserAnimationsModule,
+        MaterialModule,
+        ComponentModule,
+        PageModule,
+    ],
 })
 export class AppModule {
     constructor(matIconRegistry: MatIconRegistry) {
