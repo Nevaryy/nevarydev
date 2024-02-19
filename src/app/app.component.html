@@ -1,4 +1,4 @@
-<mat-drawer-container>
+<mat-drawer-container *ngIf="themeLoaded$ | async">
     <mat-drawer-content>
         <nev-header></nev-header>
         <div class="content column">
