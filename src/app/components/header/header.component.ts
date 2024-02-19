@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { ThemeService } from 'src/app/services/theme.service';
+import { Store } from '@ngrx/store';
 import { TranslationService } from 'src/app/services/translation.service';
+import { ToggleTheme } from 'src/app/store/theme-state/theme.actions';
+import { selectIsDark } from 'src/app/store/theme-state/theme.selectors';
 
 @Component({
     selector: 'nev-header',
@@ -10,11 +12,11 @@ import { TranslationService } from 'src/app/services/translation.service';
 export class HeaderComponent {
     languages = this.translationService.languages;
     currentLanguage = this.translationService.currentLanguage;
-    isDark$ = this.themeService.isDark$;
+    isDark$ = this.store.select(selectIsDark);
 
     constructor(
         private translationService: TranslationService,
-        private themeService: ThemeService
+        private store: Store
     ) {}
 
     public swapLanguage(language: string) {
@@ -22,6 +24,6 @@ export class HeaderComponent {
     }
 
     public toggleTheme() {
-        this.themeService.toggleLightDark();
+        this.store.dispatch(new ToggleTheme());
     }
 }
