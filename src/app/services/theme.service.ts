@@ -16,7 +16,9 @@ export class ThemeService {
 
     initialize(): Observable<any> {
         const localStorage = this.document.defaultView?.localStorage;
-        const theme = localStorage?.getItem(THEME_KEY) || this.checkPrefersLightScheme() ? 'light' : 'dark';
+        const theme =
+            localStorage?.getItem(THEME_KEY) ||
+            (this.checkPrefersLightScheme() ? 'light' : 'dark');
 
         return of(this.setTheme(theme));
     }
