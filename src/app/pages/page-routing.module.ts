@@ -1,35 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { AboutMeComponent } from './about-me/about-me.component';
-import { ImprintComponent } from './imprint/imprint.component';
-import { ProjectsComponent } from './projects/projects.component';
 
 const routes: Routes = [
     {
         path: 'home',
-        component: HomeComponent,
-        title: 'Home - NevaryDev',
+        loadChildren: () =>
+            import('./home/home.module').then((m) => m.HomeModule),
     },
     {
         path: 'about-me',
-        component: AboutMeComponent,
-        title: 'About Me - NevaryDev',
+        loadChildren: () =>
+            import('./about-me/about-me.module').then((m) => m.AboutMeModule),
     },
     {
         path: 'imprint',
-        component: ImprintComponent,
-        title: 'Imprint - NevaryDev',
+        loadChildren: () =>
+            import('./imprint/imprint.module').then((m) => m.ImprintModule),
     },
     {
         path: 'impressum',
-        title: 'Impressum - NevaryDev',
-        component: ImprintComponent,
+        loadChildren: () =>
+            import('./imprint/imprint.module').then((m) => m.ImprintModule),
     },
     {
         path: 'projects',
-        title: 'Projects - NevaryDev',
-        component: ProjectsComponent,
+        loadChildren: () =>
+            import('./projects/projects.module').then((m) => m.ProjectsModule),
     },
     {
         path: '',
