@@ -50,6 +50,7 @@
     "@angular/compiler-cli": "~17.2.0",
     "@angular/language-service": "~17.2.0",
     "@angular/localize": "~17.2.0",
+    "@angular/material": "^17.2.0",
     "@fortawesome/angular-fontawesome": "^0.14.1",
     "@ngrx/schematics": "^17.1.0",
     "@nx/eslint": "18.0.4",
