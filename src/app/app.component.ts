@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TranslationService } from './services/translation.service';
 import { Store } from '@ngrx/store';
 import { selectThemeLoaded } from './store/theme-state/theme.selectors';
 
@@ -11,10 +10,5 @@ import { selectThemeLoaded } from './store/theme-state/theme.selectors';
 export class AppComponent {
     themeLoaded$ = this.store.select(selectThemeLoaded);
 
-    constructor(
-        private translationService: TranslationService,
-        private store: Store
-    ) {
-        this.translationService.initialize();
-    }
+    constructor(private store: Store) {}
 }

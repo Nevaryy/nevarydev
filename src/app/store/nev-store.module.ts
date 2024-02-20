@@ -6,6 +6,11 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { THEME_FEATURE_KEY, themeReducer } from './theme-state/theme.reducer';
 import { ThemeEffects } from './theme-state/theme.effects';
+import {
+    SETTINGS_FEATURE_KEY,
+    settingsReducer,
+} from './settings-state/settings.reducer';
+import { SettingsEffects } from './settings-state/settings.effects';
 
 @NgModule({
     imports: [
@@ -15,11 +20,12 @@ import { ThemeEffects } from './theme-state/theme.effects';
         }),
 
         StoreModule.forFeature(THEME_FEATURE_KEY, themeReducer),
+        StoreModule.forFeature(SETTINGS_FEATURE_KEY, settingsReducer),
         StoreRouterConnectingModule.forRoot(),
         StoreDevtoolsModule.instrument({
             maxAge: 25,
         }),
-        EffectsModule.forRoot([ThemeEffects]),
+        EffectsModule.forRoot([ThemeEffects, SettingsEffects]),
     ],
     exports: [],
 })

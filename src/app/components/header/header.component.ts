@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { TranslationService } from 'src/app/services/translation.service';
+import { ChangeLanguage } from 'src/app/store/settings-state/settings.actions';
 import { ToggleTheme } from 'src/app/store/theme-state/theme.actions';
 import { selectIsDark } from 'src/app/store/theme-state/theme.selectors';
 
@@ -20,7 +21,7 @@ export class HeaderComponent {
     ) {}
 
     public swapLanguage(language: string) {
-        this.translationService.changeLanguage(language);
+        this.store.dispatch(new ChangeLanguage(language));
     }
 
     public toggleTheme() {
