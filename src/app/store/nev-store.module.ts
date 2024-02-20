@@ -11,21 +11,30 @@ import {
     settingsReducer,
 } from './settings-state/settings.reducer';
 import { SettingsEffects } from './settings-state/settings.effects';
+import {
+    NAVIGATION_FEATURE_KEY,
+    navigationReducer,
+} from './navigation-state/navigation.reducer';
+import { NavigationEffects } from './navigation-state/navigation.effects';
 
 @NgModule({
     imports: [
         CommonModule,
-        StoreModule.forRoot({
-            router: routerReducer,
-        }),
-
+        StoreModule.forRoot({ router: routerReducer }),
+        StoreModule.forFeature(NAVIGATION_FEATURE_KEY, navigationReducer),
         StoreModule.forFeature(THEME_FEATURE_KEY, themeReducer),
         StoreModule.forFeature(SETTINGS_FEATURE_KEY, settingsReducer),
+
         StoreRouterConnectingModule.forRoot(),
         StoreDevtoolsModule.instrument({
             maxAge: 25,
         }),
-        EffectsModule.forRoot([ThemeEffects, SettingsEffects]),
+
+        EffectsModule.forRoot([
+            ThemeEffects,
+            SettingsEffects,
+            NavigationEffects,
+        ]),
     ],
     exports: [],
 })
