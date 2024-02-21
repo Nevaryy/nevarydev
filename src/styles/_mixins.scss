@@ -1,0 +1,65 @@
+@use '@angular/material' as mat;
+
+$prefix: 'nev';
+
+@mixin variables($theme) {
+  @include constants;
+  @include colors($theme);
+}
+
+@mixin colors($theme) {
+  $primary: map-get($theme, 'primary');
+  $accent: map-get($theme, 'accent');
+  $warn: map-get($theme, 'warn');
+  $text: map-get($theme, 'text');
+  $background: map-get($theme, 'background');
+
+
+  @include setColorsFromPalette('warn', $warn);
+  @include setColorsFromPalette('accent', $accent);
+  @include setColorsFromPalette('primary', $primary);
+}
+
+@mixin setColorsFromPalette($paletteName, $palette) {
+  $colors-map: ();
+
+  @each $key, $value in $palette {
+    @if $key !=contrast {
+      #{$prefix}-#{$key} {
+        color: map-get($palette, $key);
+      }
+
+      $map: ();
+      $map: map-merge(
+        $map,
+        (
+          $key: $value,
+        )
+      );
+      $colors-map: map-merge($colors-map, $map);
+    }
+  }
+
+  :root {
+    --#{$prefix}-#{$paletteName}-color: #{map-get($palette, default)};
+    @each $key, $value in $colors-map {
+      --#{$prefix}-#{$paletteName}-#{$key}: #{$value};
+    }
+  }
+}
+
+@mixin constants {
+  $constants: (
+    'spacer': 4px,
+    'icon-height': 24px,
+    'row-spacer': 8px,
+    'column-spacer': 8px,
+    'content-padding': 20px,
+  );
+
+  :root {
+    @each $key, $value in $constants {
+      --#{$prefix}-#{$key}: #{$value};
+    }
+  }
+}

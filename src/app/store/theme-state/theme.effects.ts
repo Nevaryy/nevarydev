@@ -3,16 +3,12 @@ import { Inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, withLatestFrom } from 'rxjs/operators';
 import { ROOT_EFFECTS_INIT } from '@ngrx/effects';
-import {
-    ChangeTheme,
-    ChangeThemeSuccess,
-    LoadTheme,
-    ThemeActionTypes,
-} from './theme.actions';
+import { ChangeTheme, ThemeActionTypes } from './theme.actions';
 import { DOCUMENT } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { selectAvaiableThemes, selectActiveTheme } from './theme.selectors';
 import { Theme } from './theme.reducer';
+import { StyleManager } from 'src/app/style.manager';
 
 @Injectable()
 export class ThemeEffects {
@@ -20,18 +16,12 @@ export class ThemeEffects {
         this.actions$.pipe(
             ofType(ROOT_EFFECTS_INIT),
             map(() => {
-                return new LoadTheme();
-            })
-        )
-    );
-
-    $loadTheme = createEffect(() =>
-        this.actions$.pipe(
-            ofType(ThemeActionTypes.LoadTheme),
-            map(() => {
-                let theme = this.LocalStorageService.getItem('theme');
-
-                if (!theme) {
+                let theme;
+                try {
+                    theme = this.LocalStorageService.getItem(
+                        this.LocalStorageService.themeKey
+                    );
+                } catch (e) {
                     theme =
                         this.document.defaultView?.matchMedia &&
                         this.document.defaultView?.matchMedia(
@@ -41,21 +31,27 @@ export class ThemeEffects {
                             : 'dark';
                 }
 
-                return new ChangeTheme(theme);
+                return new ChangeTheme(theme || '');
             })
         )
     );
 
-    $changeTheme = createEffect(() =>
-        this.actions$.pipe(
-            ofType(ThemeActionTypes.ChangeTheme),
-            map((action: ChangeTheme) => {
-                this.LocalStorageService.setItem('theme', action.payload);
-                this.document.body.classList.remove('dark', 'light');
-                this.document.body.classList.add(action.payload);
-                return new ChangeThemeSuccess(action.payload);
-            })
-        )
+    $changeTheme = createEffect(
+        () =>
+            this.actions$.pipe(
+                ofType(ThemeActionTypes.ChangeTheme),
+                map((action: ChangeTheme) => {
+                    this.LocalStorageService.setItem(
+                        this.LocalStorageService.themeKey,
+                        action.payload
+                    );
+                    this.styleManager.setStyle(
+                        this.LocalStorageService.themeKey,
+                        action.payload
+                    );
+                })
+            ),
+        { dispatch: false }
     );
 
     $toggleTheme = createEffect(() =>
@@ -79,6 +75,7 @@ export class ThemeEffects {
         private actions$: Actions,
         private LocalStorageService: LocalStorageService,
         private store: Store,
-        @Inject(DOCUMENT) private document: Document
+        @Inject(DOCUMENT) private document: Document,
+        private styleManager: StyleManager
     ) {}
 }

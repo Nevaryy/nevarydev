@@ -9,13 +9,17 @@ export class LocalStorageService {
     public readonly languageKey = LANGUAGE_KEY;
     public readonly themeKey = 'theme';
 
-    constructor(@Inject(DOCUMENT) private document: Document) {}
+    private storage: Storage | undefined;
+
+    constructor(@Inject(DOCUMENT) private document: Document) {
+        this.storage = this.document.defaultView?.localStorage;
+    }
 
     getItem(key: string) {
-        return this.document.defaultView?.localStorage?.getItem(key);
+        return this.storage?.getItem(key);
     }
 
     setItem(key: string, value: string) {
-        return this.document.defaultView?.localStorage?.setItem(key, value);
+        return this.storage?.setItem(key, value);
     }
 }

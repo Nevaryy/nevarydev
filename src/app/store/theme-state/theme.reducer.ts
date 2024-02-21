@@ -8,21 +8,19 @@ export type Theme = {
 
 export interface ThemeState {
     loaded: boolean;
-    selectedTheme: string;
-    isDark: boolean;
+    selectedTheme?: string;
+    isDark?: boolean;
     avaiableThemes: Theme[];
 }
 
-const avaiableThems = [
+const avaiableThemes = [
     { name: 'dark', isDark: true },
     { name: 'light', isDark: false },
 ];
 
 export const initialState: ThemeState = {
     loaded: false,
-    selectedTheme: avaiableThems[0].name,
-    isDark: avaiableThems[0].isDark,
-    avaiableThemes: avaiableThems,
+    avaiableThemes: avaiableThemes,
 };
 
 export function themeReducer(
@@ -40,6 +38,7 @@ export function themeReducer(
                 ...state,
                 selectedTheme: seletectedTheme?.name,
                 isDark: seletectedTheme?.isDark,
+                loaded: false,
             };
         }
 
