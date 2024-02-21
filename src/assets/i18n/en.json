@@ -9,7 +9,32 @@
         "imprint": "Imprint"
     },
     "home": {
-        "title": "Home",
-        "text": "Welcome to the home page"
+        "title": "Welcome to my website!",
+        "paragraphs": {
+            "introduction": "I am a <em>software developer</em> and this is my personal website. Here you can find information <a href='/about-me'>about me</a> and my <a href='/projects'>projects</a>.",
+            "contents": "As a showcase this website was build using Angular with Angular Material components. Additional technologies were used as part of the showcase and are listed under <a href='/projects'>projects</a>.",
+            "disclaimer": "This website is still under construction. Some features may not work as expected.<br/><b>All of the Content is made by me</b>."
+        },
+        "source": {
+            "title": "Source code",
+            "paragraphs": {
+                "contents": "The source code of this website is available on GitHub.",
+                "link": "You can find it <a href='' target='_blank'>here</a>."
+            }
+        }
+    },
+    "about-me": {
+        "title": "About me",
+        "paragraphs": {
+            "introduction": "Hi, my name is <em>Marc</em> and I go by <em>Nevary</em> online.<br>I am a <em>software developer</em>, mainly focused on frontend, always looking for new challenges and eager to learn new things.",
+            "early": {
+                "title": "Early years",
+                "content": "I started programming in <em>secondary school</em> when i got to choose an additional subject. Out of the different options I chose <em>IT</em>. There I learned the basics of programming in <em>PHP</em> with basic <em>HTML</em>, <em>CSS</em> and later on <em>JavaScript</em>."
+            },
+            "education": {
+                "title": "Education",
+                "content": "After secondary school I went to <em>university</em> to study <em>computer science</em>. There I learned the basics of <em>Java</em> and <em>C++</em> and later on <em>Python</em> and <em>JavaScript</em>."
+            }
+        }
     }
 }

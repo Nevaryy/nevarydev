@@ -9,7 +9,32 @@
         "imprint": "Impressum"
     },
     "home": {
-        "title": "Home",
-        "text": "Willkommen auf der Startseite!"
+        "title": "Willkommen auf meiner Website!",
+        "paragraphs": {
+            "introduction": "Ich bin ein <em>Softwareentwickler</em> und dies ist meine persönliche Website. Hier finden Sie Informationen <a href='/about-me'>über mich</a> und meine <a href='/projects'>Projekte</a>.",
+            "contents": "Als Showcase wurde diese Website mit Angular und Angular Material-Komponenten erstellt. Zusätzliche Technologien wurden als Teil des Showcases verwendet und sind unter <a href='/projects'>Projekte</a> aufgeführt.",
+            "disclaimer": "Diese Website befindet sich noch im Aufbau. Einige Funktionen funktionieren möglicherweise nicht wie erwartet.<br/><b>Alle Inhalte stammen von mir</b>."
+        },
+        "source": {
+            "title": "Quellcode",
+            "paragraphs": {
+                "contents": "Der Quellcode dieser Website ist auf GitHub verfügbar.",
+                "link": "Sie finden ihn <a href='' target='_blank'>hier</a>."
+            }
+        }
+    },
+    "about-me": {
+        "title": "Über mich",
+        "paragraphs": {
+            "introduction": "Hallo, mein Name ist <em>Marc</em> und online bin ich als <em>Nevary</em> bekannt.<br>Ich bin ein <em>Softwareentwickler</em>, hauptsächlich auf Frontend fokussiert, immer auf der Suche nach neuen Herausforderungen und bereit, Neues zu lernen.",
+            "early": {
+                "title": "Frühe Jahre",
+                "content": "Ich begann in der <em>Sekundarschule</em> mit dem Programmieren, als ich ein zusätzliches Fach wählen durfte. Aus den verschiedenen Optionen wählte ich <em>IT</em>. Dort lernte ich die Grundlagen der Programmierung in <em>PHP</em> mit grundlegendem <em>HTML</em>, <em>CSS</em> und später <em>JavaScript</em>."
+            },
+            "education": {
+                "title": "Ausbildung",
+                "content": "Nach der Sekundarschule ging ich an die <em>Universität</em>, um <em>Informatik</em> zu studieren. Dort lernte ich die Grundlagen von <em>Java</em> und <em>C++</em> und später von <em>Python</em> und <em>JavaScript</em>."
+            }
+        }
     }
 }

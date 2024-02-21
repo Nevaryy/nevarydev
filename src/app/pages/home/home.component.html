@@ -1,2 +1,15 @@
 <h1 class="primary">{{ 'home.title' | translate }}</h1>
-<p>{{ 'home.text' | translate }}</p>
+<p [innerHTML]="'home.paragraphs.introduction' | translate"></p>
+<p [innerHTML]="'home.paragraphs.contents' | translate"></p>
+<p [innerHTML]="'home.paragraphs.disclaimer' | translate"></p>
+
+<div class="">
+    <h3 class="primary">{{ 'home.source.title' | translate }}</h3>
+    <p [innerHTML]="'home.source.paragraphs.contents' | translate"></p>
+    <div class="">
+        <a mat-button [href]="websiteRepoUrl" target="_blank">
+            <mat-icon fontSet="fontawesome" fontIcon="fa-github"></mat-icon>
+            <span>Nevary.dev</span>
+        </a>
+    </div>
+</div>
