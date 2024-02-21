@@ -1,3 +1,4 @@
+import { environment } from '../../../environments/environment';
 import { Component } from '@angular/core';
 
 @Component({
@@ -5,4 +6,6 @@ import { Component } from '@angular/core';
     templateUrl: './home.component.html',
     styleUrl: './home.component.scss',
 })
-export class HomeComponent {}
+export class HomeComponent {
+    websiteRepoUrl = environment.websiteRepoUrl;
+}
