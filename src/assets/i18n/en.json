@@ -1,12 +1,12 @@
 {
+    "website": {
+        "title": "Nevary Dev"
+    },
     "navigation": {
         "home": "Home",
         "about": "About me",
         "projects": "Projects",
         "imprint": "Imprint"
-    },
-    "toolbar": {
-        "title": "Nevary Dev"
     },
     "home": {
         "title": "Home",
