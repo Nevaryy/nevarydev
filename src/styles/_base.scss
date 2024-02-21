@@ -1,4 +1,4 @@
-$fa-font-path: "../node_modules/font-awesome/fonts";
+$fa-font-path: '../node_modules/font-awesome/fonts';
 @import 'font-awesome/scss/font-awesome.scss';
 
 html,
@@ -11,8 +11,17 @@ body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
-mat-form-field.no-bottom {
-  .mat-mdc-form-field-subscript-wrapper {
-    display: none !important;
+mat-form-field {
+  &.no-bottom {
+    .mat-mdc-form-field-subscript-wrapper {
+      display: none !important;
+    }
+  }
+
+  &.no-border {
+    .mdc-notched-outline__leading, 
+    .mdc-notched-outline__trailing {
+        border: none !important;
+    }
   }
 }
