@@ -4,6 +4,10 @@
     margin-top: auto;
 }
 
+p {
+    margin: 0;
+}
+
 mat-toolbar {
     padding: var.$spacer var.$spacer * 2;
 }
