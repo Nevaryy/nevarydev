@@ -1,25 +1,24 @@
-@use 'variables' as var;
-
 * {
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
-    color: $text-color;
+    color: var(--nev-text-color);
 }
 
 // General
 h1, h2, h3, h4, h5, h6, p, ul, ol, dl, table, blockquote, pre, form, figure, fieldset, hr {
     margin-bottom: 0.5rem;
+    line-height: 1.3rem;
 
     &.primary {
-        color: var.$primary-color;
+        color: var(--nev-primary-color);
     }
 
     &.accent {
-        color: var.$accent-color;
+        color: var(--nev-accent-color);
     }
 
     &.warn {
-        color: var.$warn-color;
+        color: var(--nev-warn-color);
     }
 
     &.center {
@@ -28,12 +27,16 @@ h1, h2, h3, h4, h5, h6, p, ul, ol, dl, table, blockquote, pre, form, figure, fie
 }
 
 a {
-    color: var.$primary-color;
+    color: var(--nev-primary-color);
     text-decoration: none;
 
     &:not(.mdc-button):hover {
         text-decoration: underline;
     }
+}
+
+em {
+    color: var(--nev-accent-color);
 }
 
 // Headings

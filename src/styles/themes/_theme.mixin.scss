@@ -1,32 +1,68 @@
+$prefix: 'nev';
+
+@mixin theme($theme) {
+  $theme: $theme !global;
+  @include set-variables($theme);
+  @include colors($theme);
+}
+
 @mixin set-variables($theme) {
-    $spacer: 4px !global;
-    $row-spacer: $spacer * 2 !global;
-    $column-spacer: $spacer * 2 !global;
+  $spacer: 4px !global;
+  $row-spacer: $spacer * 2 !global;
+  $column-spacer: $spacer * 2 !global;
 
-    $content-padding: $spacer * 5 !global;
+  $content-padding: $spacer * 5 !global;
 
-    $icon-height: 24px !global;
+  $icon-height: 24px !global;
+
+  :root {
+    --nev-spacer: #{$spacer};
+    --nev-row-spacer: #{$row-spacer};
+    --nev-column-spacer: #{$column-spacer};
+    --nev-content-padding: #{$content-padding};
+    --nev-icon-height: #{$icon-height};
+  }
 }
 
 @mixin colors($theme) {
-    $primary: map-get($theme, primary) !global;
-    $primary-color: map-get($theme, primary, default) !global;
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
 
-    $accent: map-get($theme, accent) !global;
-    $accent-color: map-get($theme, accent, default) !global;
+  :root {
+    --nev-primary-color: #{map-get($primary, default)};
+    --nev-accent-color: #{map-get($accent, default)};
+    --nev-warn-color: #{map-get($warn, default)};
+  }
 
-    $warn: map-get($theme, warn) !global;
-    $warn-color: map-get($theme, warn, default) !global;
-
-    $foreground: map-get($theme, foreground) !global;
-    $text-color: map-get($theme, text) !global;
-
-    $background: map-get($theme, background) !global;
-    $background-color: map-get($background, background) !global;
+  @include generateColors('primary', $primary);
+  @include generateColors('accent', $accent);
+  @include generateColors('warn', $warn);
 }
 
-@mixin theme($theme) {
-    $theme: $theme !global;
-    @include set-variables($theme);
-    @include colors($theme);
+@mixin generateColors($paletteName, $palette) {
+  $colors-map: ();
+
+  @each $key, $value in $palette {
+    @if $key !=contrast {
+      #{$prefix}-#{$key} {
+        color: map-get($palette, $key);
+      }
+
+      $map: ();
+      $map: map-merge(
+        $map,
+        (
+          $key: $value,
+        )
+      );
+      $colors-map: map-merge($colors-map, $map);
+    }
+  }
+
+  :root {
+    @each $key, $value in $colors-map {
+      --#{$prefix}-#{$paletteName}-#{$key}: #{$value};
+    }
+  }
 }

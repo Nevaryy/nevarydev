@@ -6,12 +6,12 @@
 @include mat.core();
 
 $theme: $dark-theme;
-@include set-variables($dark-theme);
+@include theme($dark-theme);
 @include mat.all-component-themes($dark-theme);
 
 .light {
         $theme: $light-theme;
-        @include set-variables($light-theme);
+        @include theme($light-theme);
         @include mat.all-component-colors($light-theme);
 }
 

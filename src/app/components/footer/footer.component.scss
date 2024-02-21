@@ -1,5 +1,3 @@
-@use 'variables' as var;
-
 :host {
     margin-top: auto;
 }
@@ -9,10 +7,10 @@ p {
 }
 
 mat-toolbar {
-    padding: var.$spacer var.$spacer * 2;
+    padding: var(--nev-spacer) calc(var(--nev-spacer) * 2);
 }
 
 a mat-icon {
-    height: var.$icon-height;
-    color: var.$text-color;
+    height: var(--nev-icon-height);
+    color: var(--nev-text-color);
 }
