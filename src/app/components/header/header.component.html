@@ -1,5 +1,5 @@
 <mat-toolbar class="row">
-    <button mat-icon-button (click)="sidenav.toggle()">
+    <button mat-icon-button (click)="toggleNav()">
         <mat-icon>menu</mat-icon>
     </button>
     <span>{{ 'website.title' | translate }}</span>
@@ -18,4 +18,4 @@
         </mat-form-field>
     </div>
 </mat-toolbar>
-<nev-sidenav #sidenav></nev-sidenav>
+<nev-sidenav></nev-sidenav>
