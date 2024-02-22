@@ -11,13 +11,22 @@ $prefix: 'nev';
   $primary: map-get($theme, 'primary');
   $accent: map-get($theme, 'accent');
   $warn: map-get($theme, 'warn');
-  $text: map-get($theme, 'text');
+  $foreground: map-get($theme, 'foreground');
   $background: map-get($theme, 'background');
 
-
+  @include setColorsFromPalette('background', $background);
+  @include setColorsFromPalette('foreground', $foreground);
   @include setColorsFromPalette('warn', $warn);
   @include setColorsFromPalette('accent', $accent);
   @include setColorsFromPalette('primary', $primary);
+
+  :root {
+    --#{$prefix}-primary-color: #{map-get($primary, default)};
+    --#{$prefix}-accent-color: #{map-get($accent, default)};
+    --#{$prefix}-warn-color: #{map-get($warn, default)};
+    --#{$prefix}-text-color: #{map-get($foreground, base)};
+    --#{$prefix}-background-color: #{map-get($background, default)};
+  }
 }
 
 @mixin setColorsFromPalette($paletteName, $palette) {
@@ -41,7 +50,6 @@ $prefix: 'nev';
   }
 
   :root {
-    --#{$prefix}-#{$paletteName}-color: #{map-get($palette, default)};
     @each $key, $value in $colors-map {
       --#{$prefix}-#{$paletteName}-#{$key}: #{$value};
     }
