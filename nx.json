@@ -64,7 +64,8 @@
       "skipTests": true,
       "directory": ".",
       "export": true,
-      "standalone": false
+      "standalone": false,
+      "changeDetection": "OnPush"
     }
   },
   "defaultProject": "nevarydev",
