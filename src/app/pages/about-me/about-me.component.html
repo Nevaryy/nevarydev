@@ -1,8 +1,4 @@
-<nev-quicknav>
-    <a mat-list-item href="./#about-me">{{ 'about-me.title' | translate }}</a>
-    <a mat-list-item href="./#early">{{ 'about-me.paragraphs.early.title' | translate }}</a>
-    <a mat-list-item href="./#education">{{ 'about-me.paragraphs.education.title' | translate }}</a>
-</nev-quicknav>
+<nev-quicknav></nev-quicknav>
 
 <h1 class="primary" id="about-me">{{ 'about-me.title' | translate }}</h1>
 <p [innerHTML]="'about-me.paragraphs.introduction' | translate"></p>
@@ -10,5 +6,5 @@
 <h2 class="primary" id="early">{{ 'about-me.paragraphs.early.title' | translate }}</h2>
 <p [innerHTML]="'about-me.paragraphs.early.content' | translate"></p>
 
-<h2 class="primary">{{ 'about-me.paragraphs.education.title' | translate }}</h2>
+<h2 class="primary" id="education">{{ 'about-me.paragraphs.education.title' | translate }}</h2>
 
