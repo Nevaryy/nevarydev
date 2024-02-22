@@ -1,22 +1,23 @@
 import { DOCUMENT } from '@angular/common';
 import {
     AfterViewInit,
+    ChangeDetectionStrategy,
     Component,
     Inject,
     OnDestroy,
-    OnInit,
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { Subscription, of } from 'rxjs';
+import { BehaviorSubject, Subscription, tap } from 'rxjs';
 
 @Component({
     selector: 'nev-quicknav',
     templateUrl: './quicknav.component.html',
     styleUrl: './quicknav.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class QuicknavComponent implements OnInit, AfterViewInit, OnDestroy {
+export class QuicknavComponent implements AfterViewInit, OnDestroy {
     private subscriptions: Subscription = new Subscription();
-    anchors: string[] = [];
+    anchors$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
     name = (id: string) => {
         return this.document.getElementById(id)?.textContent;
@@ -27,21 +28,20 @@ export class QuicknavComponent implements OnInit, AfterViewInit, OnDestroy {
         @Inject(DOCUMENT) private document: Document
     ) {}
 
-    ngOnInit(): void {
-        const anchors = this.document.querySelectorAll(
-            'h1, h2, h3, h4, h5, h6'
-        );
-
-        this.anchors = Array.from(anchors)
-            .map((anchor) => {
-                return anchor.id;
-            })
-            .filter((id) => !!id);
-    }
-
     ngAfterViewInit(): void {
         this.subscriptions.add(
             this.router.events.subscribe((event) => {
+                const anchors = this.document.querySelectorAll(
+                    'h1, h2, h3, h4, h5, h6'
+                );
+                this.anchors$.next(
+                    Array.from(anchors)
+                        .map((anchor) => {
+                            return anchor.id;
+                        })
+                        .filter((id) => !!id)
+                );
+
                 if (event instanceof NavigationEnd) {
                     this.scrollToActiveLink(event.url);
                 }

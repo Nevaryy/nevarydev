@@ -1,6 +1,5 @@
 <mat-list>
-    <ng-content></ng-content>
-    <ng-container *ngFor="let anchor of anchors">
+    <ng-container *ngFor="let anchor of (anchors$ | async)">
         <mat-list-item [routerLink]="['.']" [fragment]="anchor">{{ name(anchor) }}</mat-list-item>
     </ng-container>
 </mat-list>
