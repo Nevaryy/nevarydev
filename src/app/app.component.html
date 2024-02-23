@@ -1,4 +1,5 @@
-<mat-drawer-container *ngIf="themeLoaded$ | async; else spinner">
+@if (themeLoaded$ | async) {
+<mat-drawer-container>
     <mat-drawer-content>
         <nev-header></nev-header>
         <div class="content column">
@@ -7,8 +8,9 @@
         <nev-footer></nev-footer>
     </mat-drawer-content>
 </mat-drawer-container>
-<ng-template #spinner>
-    <div class="container column center-content">
-        <mat-spinner></mat-spinner>
-    </div>
-</ng-template>
+}
+@else {
+<div class="container column center-content">
+    <mat-spinner></mat-spinner>
+</div>
+}

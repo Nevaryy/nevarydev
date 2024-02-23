@@ -1,7 +1,7 @@
-<ng-container *ngIf="(anchors$ | async) as anchors">
+@if (anchors$ | async; as anchors) {
     <mat-list>
-        <ng-container *ngFor="let anchor of anchors">
-            <mat-list-item [routerLink]="['.']" [fragment]="anchor">{{ name(anchor) }}</mat-list-item>
-        </ng-container>
-        </mat-list>
-</ng-container>
+        @for (anchor of anchors; track anchor) {
+            <a mat-list-item [routerLink]="['.']" [fragment]="anchor">{{ name(anchor) }}</a>
+        }
+    </mat-list>
+}

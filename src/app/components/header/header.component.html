@@ -13,7 +13,9 @@
 
         <mat-form-field appearance="outline" class="no-bottom no-border" style="width: 100px;">
             <mat-select (selectionChange)="swapLanguage($event.value)" [value]="currentLanguage">
-                <mat-option *ngFor="let language of languages" [value]="language">{{ language }}</mat-option>
+                @for(language of languages; track language) {
+                    <mat-option [value]="language">{{ language }}</mat-option>
+                }
             </mat-select>
         </mat-form-field>
     </div>
