@@ -5,6 +5,7 @@ import {
     Component,
     Inject,
     OnDestroy,
+    OnInit,
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { BehaviorSubject, Subscription, tap } from 'rxjs';
@@ -15,7 +16,7 @@ import { BehaviorSubject, Subscription, tap } from 'rxjs';
     styleUrl: './quicknav.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class QuicknavComponent implements AfterViewInit, OnDestroy {
+export class QuicknavComponent implements OnInit, AfterViewInit, OnDestroy {
     private subscriptions: Subscription = new Subscription();
     anchors$: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
 
@@ -28,19 +29,12 @@ export class QuicknavComponent implements AfterViewInit, OnDestroy {
         @Inject(DOCUMENT) private document: Document
     ) {}
 
-    ngAfterViewInit(): void {
+    ngOnInit(): void {
+        this.setAnchors();
+
         this.subscriptions.add(
             this.router.events.subscribe((event) => {
-                const anchors = this.document.querySelectorAll(
-                    'h1, h2, h3, h4, h5, h6'
-                );
-                this.anchors$.next(
-                    Array.from(anchors)
-                        .map((anchor) => {
-                            return anchor.id;
-                        })
-                        .filter((id) => !!id)
-                );
+                this.setAnchors();
 
                 if (event instanceof NavigationEnd) {
                     this.scrollToActiveLink(event.url);
@@ -49,8 +43,25 @@ export class QuicknavComponent implements AfterViewInit, OnDestroy {
         );
     }
 
+    ngAfterViewInit(): void {
+        this.scrollToActiveLink(this.router.url);
+    }
+
     ngOnDestroy(): void {
         this.subscriptions.unsubscribe();
+    }
+
+    setAnchors() {
+        const anchors = this.document.querySelectorAll(
+            'h1, h2, h3, h4, h5, h6'
+        );
+        this.anchors$.next(
+            Array.from(anchors)
+                .map((anchor) => {
+                    return anchor.id;
+                })
+                .filter((id) => !!id)
+        );
     }
 
     scrollToActiveLink(url: string): void {
