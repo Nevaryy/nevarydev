@@ -1,5 +1,7 @@
-<mat-list>
-    <ng-container *ngFor="let anchor of (anchors$ | async)">
-        <mat-list-item [routerLink]="['.']" [fragment]="anchor">{{ name(anchor) }}</mat-list-item>
-    </ng-container>
-</mat-list>
+<ng-container *ngIf="(anchors$ | async) as anchors">
+    <mat-list>
+        <ng-container *ngFor="let anchor of anchors">
+            <mat-list-item [routerLink]="['.']" [fragment]="anchor">{{ name(anchor) }}</mat-list-item>
+        </ng-container>
+        </mat-list>
+</ng-container>
