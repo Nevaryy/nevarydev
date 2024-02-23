@@ -7,7 +7,7 @@
     <span class="spacer"></span>
 
     <div class="row center-content">
-        <button mat-icon-button (click)="toggleTheme()">
+        <button mat-icon-button (click)="toggleTheme()" [disabled]="(themeLoading$ | async) === false">
             <mat-icon>{{ (isDark$ | async) === false ? 'dark_mode' : 'light_mode' }}</mat-icon>
         </button>
 

@@ -4,7 +4,10 @@ import { TranslationService } from 'src/app/services/translation.service';
 import { NavigationToggleOpen } from 'src/app/store/navigation-state/navigation.actions';
 import { ChangeLanguage } from 'src/app/store/settings-state/settings.actions';
 import { ToggleTheme } from 'src/app/store/theme-state/theme.actions';
-import { selectIsDark } from 'src/app/store/theme-state/theme.selectors';
+import {
+    selectIsDark,
+    selectThemeLoaded,
+} from 'src/app/store/theme-state/theme.selectors';
 
 @Component({
     selector: 'nev-header',
@@ -15,6 +18,7 @@ export class HeaderComponent {
     languages = this.translationService.languages;
     currentLanguage = this.translationService.currentLanguage;
     isDark$ = this.store.select(selectIsDark);
+    themeLoading$ = this.store.select(selectThemeLoaded);
 
     constructor(
         private translationService: TranslationService,

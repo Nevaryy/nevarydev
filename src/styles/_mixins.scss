@@ -27,6 +27,10 @@ $prefix: 'nev';
     --#{$prefix}-text-color: #{map-get($foreground, base)};
     --#{$prefix}-background-color: #{map-get($background, background)};
   }
+
+  body {
+    --mdc-circular-progress-active-indicator-color: #{map-get($primary, default)};
+  }
 }
 
 @mixin setColorsFromPalette($paletteName, $palette) {

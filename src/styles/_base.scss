@@ -11,6 +11,8 @@ body {
 
 body {
   margin: 0;
+  background-color: var(--nev-background-color);
+  --mdc-circular-progress-active-indicator-color: #00fa9a;
 }
 
 mat-form-field {
