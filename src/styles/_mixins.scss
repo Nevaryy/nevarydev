@@ -25,7 +25,7 @@ $prefix: 'nev';
     --#{$prefix}-accent-color: #{map-get($accent, default)};
     --#{$prefix}-warn-color: #{map-get($warn, default)};
     --#{$prefix}-text-color: #{map-get($foreground, base)};
-    --#{$prefix}-background-color: #{map-get($background, default)};
+    --#{$prefix}-background-color: #{map-get($background, background)};
   }
 }
 
