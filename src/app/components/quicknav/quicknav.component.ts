@@ -8,7 +8,9 @@ import {
     OnInit,
 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { BehaviorSubject, Subscription, tap } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { BehaviorSubject, Subscription, combineLatest, tap } from 'rxjs';
+import { selectLanguage } from 'src/app/store/settings-state/settings.selectors';
 
 @Component({
     selector: 'nev-quicknav',
@@ -25,6 +27,7 @@ export class QuicknavComponent implements OnInit, AfterViewInit, OnDestroy {
     };
 
     constructor(
+        private store: Store,
         private router: Router,
         @Inject(DOCUMENT) private document: Document
     ) {}
@@ -39,6 +42,12 @@ export class QuicknavComponent implements OnInit, AfterViewInit, OnDestroy {
                 if (event instanceof NavigationEnd) {
                     this.scrollToActiveLink(event.url);
                 }
+            })
+        );
+
+        this.subscriptions.add(
+            this.store.select(selectLanguage).subscribe(() => {
+                this.setAnchors();
             })
         );
     }
