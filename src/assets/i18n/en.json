@@ -1,6 +1,6 @@
 {
     "website": {
-        "title": "Nevary Dev"
+        "title": "Nevary.Dev"
     },
     "navigation": {
         "home": "Home",
@@ -10,16 +10,17 @@
     },
     "home": {
         "title": "Welcome to my website!",
-        "paragraphs": {
-            "introduction": "I am a <em>software developer</em> and this is my personal website. Here you can find information <a href='/about-me'>about me</a> and my <a href='/projects'>projects</a>.",
-            "contents": "As a showcase this website was build using Angular with Angular Material components. Additional technologies were used as part of the showcase and are listed under <a href='/projects'>projects</a>.",
-            "disclaimer": "This website is still under construction. Some features may not work as expected.<br/><b>All of the Content is made by me</b>."
-        },
-        "source": {
-            "title": "Source code",
-            "paragraphs": {
-                "contents": "The source code of this website is available on GitHub.",
-                "link": "You can find it <a href='' target='_blank'>here</a>."
+        "sections": {
+            "main": {
+                "paragraphs": {
+                    "introduction": "I have been a <em>software developer</em> for a few years now, with a main focus on <em>web development</em>.<br>This website serves as a platform for me to share and showcase my previous <a href='/projects'>projects</a> and <a href='/about-met'>experiences</a>."
+                }
+            },
+            "source": {
+                "title": "Source Code",
+                "paragraphs": {
+                    "contents": "As a showcase of my skills, I have developed and designed this website myself.<br>I used <em>Angular</em> with <em>Material components</em> and other <a href='/projects'>technologies</a>. The <em>source code of the website</em> is publicly available on <a href='https: //github.com/Nevaryy/' target='_blank'>Github</a>, and further details about the <a href='/projects'>project</a> and the development decisions can be found under Projects."
+                }
             }
         }
     },
