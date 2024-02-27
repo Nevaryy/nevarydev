@@ -1,6 +1,6 @@
 {
     "website": {
-        "title": "Nevary Dev"
+        "title": "Nevary.Dev"
     },
     "navigation": {
         "home": "Home",
@@ -10,16 +10,17 @@
     },
     "home": {
         "title": "Willkommen auf meiner Website!",
+        "sections": {
+            "main": {
         "paragraphs": {
-            "introduction": "Ich bin ein <em>Softwareentwickler</em> und dies ist meine persönliche Website. Hier finden Sie Informationen <a href='/about-me'>über mich</a> und meine <a href='/projects'>Projekte</a>.",
-            "contents": "Als Showcase wurde diese Website mit Angular und Angular Material-Komponenten erstellt. Zusätzliche Technologien wurden als Teil des Showcases verwendet und sind unter <a href='/projects'>Projekte</a> aufgeführt.",
-            "disclaimer": "Diese Website befindet sich noch im Aufbau. Einige Funktionen funktionieren möglicherweise nicht wie erwartet.<br/><b>Alle Inhalte stammen von mir</b>."
+                    "introduction": "Ich bin nun seit ein paar Jahren schon <em>Softwareentwickler</em>, mit Hauptfokus auf <em>Webentwicklung</em>.<br>Diese Website dient mir als Plattform, um meine bisherigen <a href='/projects'>Projekte</a> und <a href='/about-met'>Erfahrungen</a> zu teilen und zu präsentieren."
+                }
         },
         "source": {
             "title": "Quellcode",
             "paragraphs": {
-                "contents": "Der Quellcode dieser Website ist auf GitHub verfügbar.",
-                "link": "Sie finden ihn <a href='' target='_blank'>hier</a>."
+                    "contents": "Als Showcase für meine Fähigkeiten habe ich diese Website selbst entwickelt und gestaltet.<br>Verwendet habe ich <em>Angular</em> mit <em>Material-Komponenten</em> und weitere <a href='/projects'>Technlogien</a>. Der <em>Quellcode der Website</em> ist frei ersichtlich auf <a href='https: //github.com/Nevaryy/' target='_blank'>Github</a> und weitere Details zum <a href='/projects'>Projekt</a> und den Entscheidungen bei der Entwicklung sind unter Projekte zu finden."
+                }
             }
         }
     },
