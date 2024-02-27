@@ -7,6 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { RouterModule } from '@angular/router';
 import { QuicknavComponent } from './quicknav/quicknav.component';
+import { ContentComponent } from './content/content.component';
 
 @NgModule({
     declarations: [
@@ -14,6 +15,7 @@ import { QuicknavComponent } from './quicknav/quicknav.component';
         FooterComponent,
         SidenavComponent,
         QuicknavComponent,
+        ContentComponent,
     ],
     imports: [CommonModule, MaterialModule, RouterModule, TranslateModule],
     exports: [
@@ -24,6 +26,7 @@ import { QuicknavComponent } from './quicknav/quicknav.component';
         SidenavComponent,
         RouterModule,
         QuicknavComponent,
+        ContentComponent,
     ],
 })
 export class ComponentModule {}
