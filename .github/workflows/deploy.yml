@@ -32,7 +32,6 @@ jobs:
 
   deploy:
     name: Deploy Image
-    needs: publish
     runs-on: ubuntu-latest
 
     steps:
