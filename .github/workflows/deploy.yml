@@ -1,0 +1,56 @@
+name: deploy
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches: [ "main" ]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}:latest
+
+jobs:
+  publish:
+    name: Publish Docker Image
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.1
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.PAT }}
+
+      - name: Build Docker images
+        run: docker compose build
+
+      - name: Publish Docker images
+        run: docker compose push
+
+  deploy:
+    name: Deploy Image
+    needs: publish
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.1.1
+
+      - name: Docker-Compose Remote Deployment
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PUBLIC_KEY }}" > ~/.ssh/id_rsa.pub
+          chmod 600 ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa.pub
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Run compose on Host
+        run: |
+          docker-compose -H ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} up -d
+
+      - name: Clean up
+        run: rm -rf ~/.ssh
