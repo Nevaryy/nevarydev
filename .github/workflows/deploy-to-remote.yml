@@ -27,9 +27,13 @@ jobs:
           chmod 600 ~/.ssh/id_rsa.pub
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
+      - name: Shutdown existing Containers
+        run: |
+          docker-compose -H ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} down
+
       - name: Run compose on Host
         run: |
-          docker-compose -H ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} up -d
+          docker-compose -H ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} up -d --build
 
       - name: Clean up
         run: rm -rf ~/.ssh
