@@ -34,13 +34,11 @@ export class ThemeEffects {
                     theme = this.LocalStorageService.getItem(
                         this.LocalStorageService.themeKey
                     );
-                    console.log('theme', theme);
                 } catch (e) {
                     theme = null;
                 }
 
                 if (!theme) {
-                    console.log('theme empty', theme);
                     theme =
                         this.document.defaultView?.matchMedia &&
                         this.document.defaultView?.matchMedia(
