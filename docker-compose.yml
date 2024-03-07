@@ -3,6 +3,9 @@ version: "3.3"
 volumes:
   nevadev-data:
 
+networks:
+  nevadev:
+
 services:
   nevadev:
     build: .
@@ -10,3 +13,5 @@ services:
       - "80:80"
     volumes:
       - nevadev-data:/code
+    networks:
+      - nevadev
