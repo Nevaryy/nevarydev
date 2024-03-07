@@ -8,9 +8,10 @@ networks:
 
 services:
   nevadev:
+    container_name: nevadev
     build: .
     ports:
-      - "80:80"
+      - "8080:80"
     volumes:
       - nevadev-data:/code
     networks:
