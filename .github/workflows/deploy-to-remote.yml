@@ -18,7 +18,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4.1.1
 
-      - name: Docker-Compose Remote Deployment
+      - name: Adding SSH Keys and Hosts
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
@@ -27,11 +27,11 @@ jobs:
           chmod 600 ~/.ssh/id_rsa.pub
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Shutdown existing Containers
+      - name: Remove existing Containers
         run: |
           docker-compose -H ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} down
 
-      - name: Run compose on Host
+      - name: Build and start new Containers
         run: |
           docker-compose -H ssh://${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} up -d --build
 
