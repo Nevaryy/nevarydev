@@ -1,9 +1,13 @@
 import { LocalStorageService } from './../../services/local-storage.service';
 import { Inject, Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import {
+    Actions,
+    ROOT_EFFECTS_INIT,
+    createEffect,
+    ofType,
+} from '@ngrx/effects';
 import { map, withLatestFrom } from 'rxjs/operators';
-import { ROOT_EFFECTS_INIT } from '@ngrx/effects';
-import { ChangeTheme, ThemeActionTypes } from './theme.actions';
+import { ChangeTheme, LoadTheme, ThemeActionTypes } from './theme.actions';
 import { DOCUMENT } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { selectAvaiableThemes, selectActiveTheme } from './theme.selectors';
@@ -16,12 +20,27 @@ export class ThemeEffects {
         this.actions$.pipe(
             ofType(ROOT_EFFECTS_INIT),
             map(() => {
+                return new LoadTheme();
+            })
+        )
+    );
+
+    $loadTheme = createEffect(() =>
+        this.actions$.pipe(
+            ofType(ThemeActionTypes.LoadTheme),
+            map(() => {
                 let theme;
                 try {
                     theme = this.LocalStorageService.getItem(
                         this.LocalStorageService.themeKey
                     );
+                    console.log('theme', theme);
                 } catch (e) {
+                    theme = null;
+                }
+
+                if (!theme) {
+                    console.log('theme empty', theme);
                     theme =
                         this.document.defaultView?.matchMedia &&
                         this.document.defaultView?.matchMedia(
@@ -31,7 +50,7 @@ export class ThemeEffects {
                             : 'dark';
                 }
 
-                return new ChangeTheme(theme || '');
+                return new ChangeTheme(theme);
             })
         )
     );
