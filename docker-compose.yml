@@ -10,6 +10,7 @@ services:
   nevadev:
     container_name: nevadev
     build: .
+    restart: unless-stopped
     ports:
       - "8080:80"
     volumes:
